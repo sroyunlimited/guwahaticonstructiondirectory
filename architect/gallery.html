@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding:20;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5rem;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container" id="gallery"></div>
+
+  <script>
+    // Get the folder name from query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const folder = urlParams.get('folder');
+
+    const container = document.getElementById("gallery");
+
+      const img = document.createElement("img");
+      img.src = `images/${folder}.jpg`;
+      img.onerror = () => img.remove(); // Remove if not found
+      container.appendChild(img);
+  </script>
+
+</body>
+</html>
